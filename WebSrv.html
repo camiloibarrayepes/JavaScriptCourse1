@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		fetch('https://dog.ceo/api/breeds/list/all')
+		.then((respuesta) => {
+			return respuesta.json();
+		}).then((respuesta) => {
+			document.getElementById('nombre').value = respuesta.status;
+			document.getElementById('apellido').value = respuesta.message.bulldog;			
+		})
+	</script>
+	<title></title>
+</head>
+<body>
+	<div id="informacion"></div>
+	
+	<input type="text" id="nombre" name="">
+	<input type="text" id="apellido" name="">
+	
+	
+</body>
+</html>
