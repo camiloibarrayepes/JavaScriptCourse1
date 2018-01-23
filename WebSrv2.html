@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title></title>
+   <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+   <!--<script type="text/javascript">
+     $(function (){
+      $("#get_btn").click(function(){
+        $.ajax({
+          url: 'http://materiales.canela.me/json_jquery',
+          type: 'POST',
+          dataType: 'JSON',
+          success: function(data){
+            var infocancion = data[3].titulo;
+            infocancion += " - " + data[2].autor;
+            infocancion += "<br/><em>" + data[2].album + "</em>";
+            infocancion += "<br/><img width='200px' src='" + data[2].portada +"'>";
+            $("#salida").html(infocancion);
+          }
+        })
+      })
+    })
+   </script>-->
+   <!-- Usando ciclo For para iterar cada campo -->
+   <script type="text/javascript">
+     $(function (){
+      $("#get_btn").click(function(){
+        $.ajax({
+          url: 'http://materiales.canela.me/json_jquery',
+          type: 'POST',
+          dataType: 'JSON',
+          success: function(data){
+            var canciones = "<ul>";
+            for (var c=0; c < data.length; c++){
+              var infocancion = "<li>" + data[c].titulo;
+              infocancion += " - " + data[c].autor;  
+              infocancion += "<em>" + data[c].album + "</em></li>";
+              canciones += infocancion;
+              
+            }
+            canciones += "</ul>";
+            $("#salida").html(canciones);
+          }
+        })
+      })
+    })
+   </script>
+ </head>
+ <body>
+ 
+ </body>
+ </html>
+
+
+<button id="get_btn" class="btn btn-default">
+Cargar datos
+</button><br>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Respuesta</div>
+  <div class="panel-body" id="salida">Presiona el boton para iniciar</div>
+</div>
