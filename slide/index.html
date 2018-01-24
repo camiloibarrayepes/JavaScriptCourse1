@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.header{
+			text-align: center;
+		}
+		.slider{
+			width: 900px;
+			height: 400px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.slides{
+			display: block;
+			width: 8000px;
+			height: 400px;
+			list-style: none;
+		}
+		.slide{
+			float: left;
+			height: 400px;
+			width: 900px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>Basic slide jquery</h1>
+	</div>
+	<div class="slider">
+		<ul class="slides">
+			<li class="slide"><img src="http://via.placeholder.com/900x400" alt=""></li>
+			<li class="slide"><img src="http://via.placeholder.com/900x400" alt=""></li>
+			<li class="slide"><img src="http://via.placeholder.com/900x400" alt=""></li>
+			<li class="slide"><img src="http://via.placeholder.com/900x400" alt=""></li>
+			<li class="slide"><img src="http://via.placeholder.com/900x400" alt=""></li>
+			<li class="slide"><img src="http://via.placeholder.com/900x400" alt=""></li>
+		</ul>
+	</div>
+
+
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  	var currentSlide = 1;
+  	var $slider = $(".slides");
+  	var slideCount = $slider.children();
+  	var slideTime = 2000;
+  	var animationTime = 800;
+
+  	setInterval(function(){
+  		$slider.animate({
+  			marginLeft : '-=900px'
+  		},animationTime, function(){
+  			currentSlide++;
+  			if(currentSlide === slideCount){
+  				currentSlide = 1;
+  				$(this).css("margin-left", "0px");
+  			}
+  		});
+  	},slideTime);
+
+  </script>
+</body>
+</html>
